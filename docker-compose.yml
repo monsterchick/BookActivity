@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  flask:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: ctn_flask
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
+    networks:
+      - app-network
+
+  vue:
+    build: 
+      context: ./web
+      dockerfile: Dockerfile  # 修正：从项目根目录下的web文件夹中找Dockerfile
+    container_name: ctn_web
+    ports:
+      - "80:80"
+    depends_on:
+      - flask  # 修正：依赖正确的服务名称
+    networks:
+      - app-network
+
+# 定义网络（必需）
+networks:
+  app-network:
+    driver: bridge

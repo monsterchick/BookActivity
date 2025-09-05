@@ -9,8 +9,7 @@ from application.utils.tool import NewEncoder
 app = Flask(__name__, static_folder='dist', static_url_path='')
 
 # SQLAlchemy config
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Yaphp1996qqcaoyang@39.103.201.117:3306/bookactivity'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@127.0.0.1:3306/bookactivity'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://avnadmin:AVNS_y3aUBNGRXmR6thd1gP7@bookactivity-indproject.d.aivencloud.com:25870/defaultdb?'
 # app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_size': 20,
@@ -37,4 +36,4 @@ CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 db.init_app(app)
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
