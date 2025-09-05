@@ -4,12 +4,15 @@ from application.model.models import db
 from application.controller.web import webapp
 from application.controller.api import router
 from application.utils.tool import NewEncoder
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # create app
 app = Flask(__name__, static_folder='dist', static_url_path='')
 
 # SQLAlchemy config
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://avnadmin:AVNS_y3aUBNGRXmR6thd1gP7@bookactivity-indproject.d.aivencloud.com:25870/defaultdb?'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_KEY')
 # app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_size': 20,
