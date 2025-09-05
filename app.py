@@ -22,7 +22,7 @@ app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
 }
 
 # secret key
-app.secret_key = "blog"
+app.secret_key = os.environ.get('secret_key')
 
 # json encoder
 app.json_encoder = NewEncoder
